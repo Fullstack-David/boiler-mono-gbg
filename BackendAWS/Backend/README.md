@@ -1,0 +1,12 @@
+# set up in terminal
+npm i
+npx prisma init????
+npx prisma generate
+npx prisma migrate dev
+# BackendAWS
+
+
+<!-- DOCKER BABY -->
+KOM IHÅG ATT FYLLA I ENV VARIABLER I COMPOSE.YAML (ENV VARIABLER HAMNAR ISÅFALL PÅ GITHUB SÅ VAR FÖRSIKTIGA OCH GLÖM INTE TA BORT DESSA INNAN NI PUSHAR)
+HÅLLER PÅ ATT FÖRSÖKA HITTA ETT SÄTT DÄR VI KAN ANVÄNDA DESSA UTAN ATT DET SYNS NÅGONSTANS
+docker compose up
