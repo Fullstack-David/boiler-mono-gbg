@@ -1,0 +1,3 @@
+docker build -t <fileName> .                        skapar en image
+docker images                                       för att få uppgifter om de olika images i terminalen
+docker run -p 5173:5173 <imagesID/imagesName>       -p localport:exposedport

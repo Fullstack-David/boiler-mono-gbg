@@ -4,13 +4,17 @@ import { UserProfile } from "../types/types.js";
 import dotenv from "dotenv";
 
 dotenv.config();
+const clientID = process.env.GITHUB_CLIENT_ID as string || "Ov23liytUKPfKwmanNUp" // test med hårdkodad env för docker ska fungera
+const clientSecret = process.env.GITHUB_CLIENT_SECRET as string || "fefb6bd8588e2c1189aa51917d33113184f5c8e1" // test med hårdkodad env för docker ska fungera
+console.log(clientID, "clientID")
+console.log(clientSecret, "clientSecret")
 
 // Använd GitHub-strategin
 passport.use(
   new GitHubStrategy(
     {
-      clientID: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      clientID: clientID,
+      clientSecret: clientSecret,
       callbackURL: "http://localhost:5173/",
     },
     (
