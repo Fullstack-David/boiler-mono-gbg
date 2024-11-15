@@ -5,8 +5,12 @@ name: integration
 on:
 # när vi vill göra våra actions
   push:
+    paths:
+      - './BackendAWS/**'
     branches: [ "main" ]
   pull_request:
+    paths:
+      - './BackendAWS/**'
     branches: [ "main" ]
 jobs:
   # namn på jobbet "build", kan va annat
@@ -24,8 +28,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm i --prefix ./BackendAWS
-    - run: npm build --prefix ./BackendAWS
+    - run: npm i
+    - run: npm build
 
   ############ TEST ############
 
