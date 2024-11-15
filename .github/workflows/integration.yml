@@ -24,8 +24,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm i
-    - run: npm build
+    - run: npm i --prefix ./BackendAWS
+    - run: npm build --prefix ./BackendAWS
 
   ############ TEST ############
 
