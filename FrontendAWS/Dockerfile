@@ -1,6 +1,7 @@
+#frontend
 FROM node:20-alpine3.18
 
-WORKDIR /fronendAWS/
+WORKDIR /app
 
 COPY package*.json ./
 

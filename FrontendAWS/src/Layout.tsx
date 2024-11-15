@@ -13,7 +13,7 @@ const Layout = () => {
                 <div className="container mx-auto px-4 py-6 flex items-center justify-between">
                     <Link to="/" className="flex items-center gap-2">
                         <MountainIcon className="h-6 w-6" />
-                        <span className="text-lg font-semibold">Gbg Marketing</span>
+                        <span className="text-lg font-semibold">Gbg Marketing!</span>
                     </Link>
                     <div className="flex items-center gap-4">
                         {!isLoggedIn && <>
