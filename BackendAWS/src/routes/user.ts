@@ -29,7 +29,6 @@ router.post("/", async (req: Request<{}, {}, RequestUser>, res) => {
       where: { email },
     });
 
-    console.log("Existing user check result:", existingUser);
     if (existingUser) {
       console.log("Duplicate email detected");
       return res

@@ -1,0 +1,38 @@
+services:
+  frontend:
+    depends_on:
+      - backend
+    build: ./FrontendAWS
+    container_name: jokesVille_client
+    ports:
+      - 5173:5173
+    develop:
+        # specificerar filer som ska övervakas för ändringar
+        watch:
+        # övervakar ändringar i package.json och package-lock.json och bygger om containern vid ändringar
+        - path: ./FrontendAWS/package.json
+          action: rebuild
+        - path: ./FrontendAWS/package-lock.json
+          action: rebuild
+        # övervakar ändringar i frontend-mappen och synkar ändringarna i realtid med containern
+        - path: ./FrontendAWS
+          target: /app
+          action: sync
+  backend:
+    env_file: ".env"
+    build: ./BackendAWS
+    container_name: jokesVille_server
+    ports:
+      - 3000:3000
+    develop:
+      # specificerar filer som ska övervakas för ändringar
+      watch:
+        # övervakar ändringar i package.json och package-lock.json och bygger om containern och bilden vid ändringar
+        - path: ./BackendAWS/package.json
+          action: rebuild
+        - path: ./BackendAWS/package-lock.json
+          action: rebuild
+        # övervakar ändringar i backend-mappen och synkar ändringarna i realtid med containern
+        - path: ./BackendAWS
+          target: /app
+          action: sync
