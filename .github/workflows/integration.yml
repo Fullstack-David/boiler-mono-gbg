@@ -14,8 +14,8 @@ on:
     branches: [ "main" ]
 jobs:
   # namn på jobbet "build", kan va annat
-  ############ BUILD ############
-  build:
+  ############ BUILD BACKEND ############
+  backend-build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
