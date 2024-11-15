@@ -13,7 +13,7 @@ export function Home() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Underbar marknadsföring för ditt företag
+                  marknadsföring för ditt företag
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
                   Vår plattform ger dig de verktyg du behöver för att nå ut till

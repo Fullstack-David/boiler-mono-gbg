@@ -5,8 +5,10 @@ docker run -p 5173:5173 <imagesID/imagesName>                                   
 #Frontend
 docker run -p 5173:5173 -v "$(pwd):/app" -v /app/node_modules <imagesID/imagesName>     -v "$(pwd):/app" -v /app/node_modules länkar din lokala kod med containern
 
-#Frontend
+
+#Backend
 docker run -p 3000:3000 -v "$(pwd):/app" -v /app/node_modules <imagesID/imagesName>     -v "$(pwd):/app" -v /app/node_modules länkar din lokala kod med containern
 
 #Compose
+(docker init)
 docker-compose up --build
