@@ -5,12 +5,12 @@ name: integration
 on:
 # när vi vill göra våra actions
   push:
-    paths:
-      - './BackendAWS'
+    paths-ignore:
+      - './FrontendAWS'
     branches: [ "main" ]
   pull_request:
-    paths:
-      - './BackendAWS/**'
+    paths-ignore:
+      - './FrontendAWS'
     branches: [ "main" ]
 jobs:
   # namn på jobbet "build", kan va annat
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x, 22.x]
+        node-version: [20.x]
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x, 22.x]
+        node-version: [20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v4
