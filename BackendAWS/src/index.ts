@@ -68,7 +68,7 @@ app.use("/users", userRouter);
 app.use("/auth", authRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello from Backend  😊 hotfix funkar inte?");
+  res.send("Hello from Backend  😊 hotfix funkar!");
 });
 
 // const SERVER_PORT = process.env.SERVER_PORT || 1337;
