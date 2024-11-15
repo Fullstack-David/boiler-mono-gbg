@@ -27,9 +27,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: BackendAWS/package-lock.json
-    - run: npm i --prefix BackendAWS
-    - run: npm build --prefix BackendAWS
+        cache-dependency-path: ./BackendAWS/package-lock.json
+    - run: npm i --prefix ./BackendAWS
+    - run: npm build --prefix ./BackendAWS
 
   ############ TEST ############
 
