@@ -67,7 +67,7 @@ app.get("/logout", (req: Request, res: Response) => {
   req.logout((err) => {
     if (err) {
       console.error("Error during logout:", err);
-      return res.status(500).json({ message: "Error logging out" });
+      return res.status(500).json({ message: "Error logging out hahahha" });
     }
     res.redirect("http://localhost:5173/");
   });
