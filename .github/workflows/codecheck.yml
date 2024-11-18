@@ -51,6 +51,7 @@ jobs:
 
       - name: run cat
         run: |
+          cd ./FrontendAWS
           cat eslint-results.sarif
 
       - name: Upload analysis results to GitHub
