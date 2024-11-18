@@ -19,7 +19,7 @@ on:
     - cron: '17 11 * * 1'
 
 jobs:
-  eslint:
+  eslint-backend:
     name: Run eslint scanning
     runs-on: ubuntu-latest
     permissions:
@@ -32,13 +32,16 @@ jobs:
 
       - name: Install ESLint
         run: |
+          cd BackendAWS/
           npm install eslint@8.10.0
           npm install @microsoft/eslint-formatter-sarif@3.1.0
 
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
-        run: npx eslint .
+        run: |
+          cd BackendAWS/
+          npx eslint .
           --config .eslintrc.js
           --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
