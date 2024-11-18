@@ -42,7 +42,7 @@ app.post(
           return res.status(500).json({ message: "Internal server error!!" });
         else
           res.json({
-            message: "Logged in successfully",
+            message: "Logged in successfully bitches",
             user: { id: user.id, email: user.email, name: user.name },
             redirectUrl: "/campaigns",
           });
