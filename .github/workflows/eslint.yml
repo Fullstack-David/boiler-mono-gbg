@@ -1,55 +1,11 @@
-# # This workflow uses actions that are not certified by GitHub.
-# # They are provided by a third-party and are governed by
-# # separate terms of service, privacy policy, and support
-# # documentation.
-# # ESLint is a tool for identifying and reporting on patterns
-# # found in ECMAScript/JavaScript code.
-# # More details at https://github.com/eslint/eslint
-# # and https://eslint.org
-
-# name: ESLint
-
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     # The branches below must be a subset of the branches above
-#     branches: [ "main" ]
-#   schedule:
-#     - cron: '28 12 * * 0'
-
-# jobs:
-#   eslint:
-#     name: Run eslint scanning
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       security-events: write
-#       actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: Install ESLint
-#         run: |
-#           npm install eslint@8.10.0
-#           npm install @microsoft/eslint-formatter-sarif@3.1.0
-
-#       - name: Run ESLint
-#         env:
-#           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
-#         run: npx eslint .
-#           --config .eslintrc.js
-#           --ext .js,.jsx,.ts,.tsx
-#           --format @microsoft/eslint-formatter-sarif
-#           --output-file eslint-results.sarif
-#         continue-on-error: true
-
-#       - name: Upload analysis results to GitHub
-#         uses: github/codeql-action/upload-sarif@v3
-#         with:
-#           sarif_file: eslint-results.sarif
-#           wait-for-processing: true
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# ESLint is a tool for identifying and reporting on patterns
+# found in ECMAScript/JavaScript code.
+# More details at https://github.com/eslint/eslint
+# and https://eslint.org
 
 name: ESLint
 
@@ -57,20 +13,19 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
+    # The branches below must be a subset of the branches above
     branches: [ "main" ]
   schedule:
     - cron: '28 12 * * 0'
 
 jobs:
   eslint:
-    name: Run ESLint scanning
+    name: Run eslint scanning
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: boiler-mono-gbg/
     permissions:
       contents: read
       security-events: write
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -80,46 +35,18 @@ jobs:
           npm install eslint@8.10.0
           npm install @microsoft/eslint-formatter-sarif@3.1.0
 
-      # Kör ESLint för BackendAWS
-      - name: Run ESLint for BackendAWS
+      - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
-        run: |
-          mkdir -p reports
-          npx eslint BackendAWS --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file reports/     eslint-results-backend.sarif
+        run: npx eslint .
+          --config .eslintrc.js
+          --ext .js,.jsx,.ts,.tsx
+          --format @microsoft/eslint-formatter-sarif
+          --output-file eslint-results.sarif
         continue-on-error: true
 
-      - name: Upload SARIF file
+      - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: reports/eslint-results-backend.sarif
-
-      - name: Verify SARIF file for BackendAWS
-        run: |
-          if [ ! -f reports/eslint-results-backend.sarif ]; then
-            echo "No SARIF file generated for BackendAWS. Skipping upload.";
-            exit 0;
-          fi
-
-
-      # # Kör ESLint för FrontendAWS
-      # - name: Run ESLint for FrontendAWS
-      #   env:
-      #     SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
-      #   run: |
-      #     mkdir -p reports
-      #     npx eslint FrontendAWS --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file reports/eslint-results-frontend.sarif
-      #   continue-on-error: true
-
-      # - name: Verify SARIF file for FrontendAWS
-      #   run: |
-      #     if [ ! -f reports/eslint-results-frontend.sarif ]; then
-      #       echo "No SARIF file generated for FrontendAWS. Skipping upload.";
-      #       exit 0;
-      #     fi
-
-      # - name: Upload analysis results for FrontendAWS
-      #   uses: github/codeql-action/upload-sarif@v3
-      #   with:
-      #     sarif_file: reports/eslint-results-frontend.sarif
-      #     wait-for-processing: true
+          sarif_file: eslint-results.sarif
+          wait-for-processing: true
