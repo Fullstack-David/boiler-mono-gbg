@@ -65,6 +65,9 @@ jobs:
   eslint:
     name: Run ESLint scanning
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /home/runner/work/boiler-mono-gbg/
     permissions:
       contents: read
       security-events: write
@@ -83,8 +86,13 @@ jobs:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
           mkdir -p reports
-          npx eslint BackendAWS --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file reports/eslint-results-backend.sarif --debug
+          npx eslint BackendAWS --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file reports/     eslint-results-backend.sarif
         continue-on-error: true
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: reports/eslint-results-backend.sarif
 
       - name: Verify SARIF file for BackendAWS
         run: |
@@ -93,11 +101,6 @@ jobs:
             exit 0;
           fi
 
-      - name: Upload analysis results for BackendAWS
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: reports/eslint-results-backend.sarif
-          wait-for-processing: true
 
       # # Kör ESLint för FrontendAWS
       # - name: Run ESLint for FrontendAWS
