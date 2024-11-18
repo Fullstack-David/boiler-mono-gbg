@@ -41,7 +41,7 @@ jobs:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
           cd BackendAWS/
-          npx eslint BackendAWS
+          npx eslint .
           --config .eslintrc.js
           --c .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
