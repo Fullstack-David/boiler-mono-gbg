@@ -39,7 +39,7 @@ app.post(
       // Dubbel error-handling?? :-)
       req.logIn(user, (err) => {
         if (err)
-          return res.status(500).json({ message: "Internal server error!!" });
+          return res.status(500).json({ message: "Internal server error!" });
         else
           res.json({
             message: "Logged in successfully bitches",
