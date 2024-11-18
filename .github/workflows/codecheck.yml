@@ -45,7 +45,7 @@ jobs:
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
-          cd BackendAWS/
+          cd BackendAWS/ &&
           npx eslint .
           --config .eslintrc.js
           --ext .js,.jsx,.ts,.tsx
