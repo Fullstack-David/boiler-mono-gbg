@@ -67,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /home/runner/work/boiler-mono-gbg/
+        working-directory: boiler-mono-gbg/
     permissions:
       contents: read
       security-events: write
