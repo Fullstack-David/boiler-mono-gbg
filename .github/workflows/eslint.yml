@@ -83,7 +83,7 @@ jobs:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
           mkdir -p reports
-          npx eslint BackendAWS --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file reports/eslint-results-backend.sarif
+          npx eslint BackendAWS --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file reports/eslint-results-backend.sarif --debug
         continue-on-error: true
 
       - name: Verify SARIF file for BackendAWS
