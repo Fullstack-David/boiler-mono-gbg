@@ -42,7 +42,7 @@ jobs:
         run: |
           cd ./FrontendAWS
           npx eslint .
-          --config .eslintrc.js
+          --config eslint.config.js
           --c .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
           --output-file eslint-results.sarif
