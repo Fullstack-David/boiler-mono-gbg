@@ -34,18 +34,17 @@ jobs:
         run: |
           cd ./FrontendAWS
           npm install eslint
-          npm install @microsoft/eslint-formatter-sarif@3.1.0
+          npm install @microsoft/eslint-formatter-sarif@latest
 
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
           cd ./FrontendAWS
-          npx eslint ./src
-          --fix
+          npx eslint .
           --config eslint.config.js
           --format @microsoft/eslint-formatter-sarif
-          --output-file eslint-results.sarif
+          --output-file ./eslint-results.sarif
         continue-on-error: true
 
       # - name: run cat
